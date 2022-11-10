@@ -1,6 +1,18 @@
+const inputBtn = document.getElementById("input-btn");
+const inputEl = document.getElementById("input-el");
+const ulEl = document.getElementById("ul-el");
+let myUrls = [];
 
-const inputBtn = document.getElementById("input-btn")
+inputBtn.addEventListener("click", function () {
+  myUrls.push(inputEl.value);
+  inputEl.value = ""
+  renderUrls()
+});
 
-inputBtn.addEventListener("click", function() {
-    console.log("Button clicked from event listner")
-})
+function renderUrls() {
+  let listItems = "";
+  for (let i = 0; i < myUrls.length; i++) {
+    listItems += "<li><a target= '_blank' href=' " + myUrls + "'>" + myUrls[i] + "</a></li>";
+  }
+  ulEl.innerHTML = listItems;
+}
