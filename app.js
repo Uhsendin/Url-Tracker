@@ -11,12 +11,14 @@ if (urlsLocalStorage) {
   renderUrls();
 }
 
+// clears local storage, myUrls and DOM on double click
 deleteBtn.addEventListener("dblclick", function () {
   localStorage.clear();
   myUrls = [];
   renderUrls()
 });
 
+// pushes user inputs to the page
 inputBtn.addEventListener("click", function () {
   myUrls.push(inputEl.value);
   inputEl.value = "";
@@ -25,6 +27,7 @@ inputBtn.addEventListener("click", function () {
   renderUrls();
 });
 
+// creates <li>'s with urls from user inputs
 function renderUrls() {
   let listItems = "";
   for (let i = 0; i < myUrls.length; i++) {
