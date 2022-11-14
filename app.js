@@ -1,16 +1,21 @@
 const inputBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
+const deleteBtn = document.getElementById("delete-btn");
 let myUrls = [];
-
 // changes urls to an array from a string
-let urlsLocalStorage = JSON.parse(localStorage.getItem("myUrls"))
+const urlsLocalStorage = JSON.parse(localStorage.getItem("myUrls"));
 
 if (urlsLocalStorage) {
-  myUrls = urlsLocalStorage
-  renderUrls()
+  myUrls = urlsLocalStorage;
+  renderUrls();
 }
 
+deleteBtn.addEventListener("dblclick", function () {
+  localStorage.clear();
+  myUrls = [];
+  renderUrls()
+});
 
 inputBtn.addEventListener("click", function () {
   myUrls.push(inputEl.value);
@@ -18,7 +23,6 @@ inputBtn.addEventListener("click", function () {
   // saves Urls to local storage as strings
   localStorage.setItem("myUrls", JSON.stringify(myUrls));
   renderUrls();
-  
 });
 
 function renderUrls() {
